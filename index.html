@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang='it'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'>
+<meta name='theme-color' content='#1f5a47'>
+<title>Novena a San Raffaele Arcangelo</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap' rel='stylesheet'>
+<style>
+:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2620;--muted:#7a6f60;--accent:#1f5a47;--gold:#b0833a;--line:#e6dccb;--soft:#eef3ef;--fs:19px}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1a16;--card:#16231e;--ink:#ece6da;--muted:#a79f90;--accent:#7cc4a6;--gold:#d9b06a;--line:#27372f;--soft:#1c2c26}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:var(--fs);line-height:1.55;padding-bottom:env(safe-area-inset-bottom)}
+header{background:linear-gradient(160deg,#16463a,#1f5a47 55%,#2c6e58);color:#f7f1e3;padding:calc(28px + env(safe-area-inset-top)) 20px 18px;text-align:center;position:relative}
+header .cross{font-size:22px;color:#e2c07e;letter-spacing:.3em}
+header h1{font-weight:600;font-size:1.6em;line-height:1.15;margin:6px 0 4px}
+header p{font-style:italic;opacity:.85;font-size:.95em}
+.tools{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px;display:flex;gap:6px}
+.tools button{background:rgba(255,255,255,.14);border:0;color:#fff;font:600 13px Inter,sans-serif;border-radius:8px;padding:6px 9px}
+nav.days{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:10px 14px;scrollbar-width:none}
+nav.days::-webkit-scrollbar{display:none}
+nav.days button{flex:0 0 auto;min-width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 15px Inter,sans-serif;transition:.2s}
+nav.days button.on{background:var(--accent);color:var(--bg);border-color:var(--accent);transform:scale(1.06)}
+main{max-width:640px;margin:0 auto;padding:16px 14px 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.label{font:600 11px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+h2{font-size:1.35em;font-weight:600;line-height:1.2;margin-bottom:10px;color:var(--accent)}
+h3{font-size:1.1em;font-weight:600;margin:14px 0 4px}
+p{margin-bottom:10px}
+.ref{font:500 13px Inter,sans-serif;color:var(--muted);margin-bottom:8px}
+.story{font-style:italic;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px;margin:10px 0 14px}
+.v{color:var(--accent);font-weight:700;margin-right:4px}
+.rubric{font:400 13px/1.5 Inter,sans-serif;color:var(--muted);margin:8px 0}
+.prop{background:var(--soft);border-radius:12px;padding:12px 14px;margin-top:12px}
+.prop b{font:600 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+textarea{width:100%;min-height:70px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-size:.95em;resize:vertical}
+.int{color:var(--accent);font-style:italic}
+.bead{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px 52px;margin:10px 0;color:var(--ink);font:inherit;position:relative;cursor:pointer;transition:.2s}
+.bead::before{content:attr(data-n);position:absolute;left:12px;top:14px;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font:600 13px Inter,sans-serif;color:var(--gold)}
+.bead.done{opacity:.55}
+.bead.done::before{content:'✓';background:var(--gold);color:var(--card)}
+.bead strong{display:block;color:var(--accent);font-size:1.02em}
+.bead .after{font:400 13px/1.5 Inter,sans-serif;color:var(--muted);margin-top:6px}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:4px 0 6px}
+.progress i{display:block;height:100%;background:var(--gold);width:0;transition:.3s}
+details{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+summary{font:600 13px Inter,sans-serif;color:var(--accent);cursor:pointer}
+details p{margin-top:8px}
+.lit{list-style:none}
+.lit li{padding:5px 0;border-bottom:1px dashed var(--line)}
+.lit li:last-child{border:0}
+.lit .r{color:var(--accent);font-style:italic;white-space:nowrap}
+.lit .sep{border:0;padding-top:12px}
+.pager{display:flex;gap:10px}
+.pager button{flex:1;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--accent);font:600 15px Inter,sans-serif}
+.pager button:disabled{opacity:.35}
+footer{text-align:center;font:400 12px Inter,sans-serif;color:var(--muted);padding:0 20px 30px}
+</style>
+</head>
+<body>
+<header>
+  <div class='tools'><button onclick='fs(-1)' aria-label='Testo più piccolo'>A−</button><button onclick='fs(1)' aria-label='Testo più grande'>A+</button></div>
+  <div class='cross'>✦ ✝ ✦</div>
+  <h1>Novena a San Raffaele Arcangelo</h1>
+  <p>Medicina di Dio · compagno del cammino</p>
+</header>
+<nav class='days' id='nav'></nav>
+<main id='app'></main>
+<footer>Preghiera personale ispirata al Libro di Tobia.<br>Festa dei Santi Arcangeli: 29 settembre.</footer>
+<script>
+const PATER=`Padre nostro, che sei nei cieli, sia santificato il tuo nome, venga il tuo regno, sia fatta la tua volontà, come in cielo così in terra. Dacci oggi il nostro pane quotidiano, e rimetti a noi i nostri debiti come anche noi li rimettiamo ai nostri debitori, e non abbandonarci alla tentazione, ma liberaci dal male. Amen.`;
+const AVE=`Ave, o Maria, piena di grazia, il Signore è con te. Tu sei benedetta fra le donne e benedetto è il frutto del tuo seno, Gesù. Santa Maria, Madre di Dio, prega per noi peccatori, adesso e nell’ora della nostra morte. Amen.`;
+const GLORIA=`Gloria al Padre e al Figlio e allo Spirito Santo. Come era nel principio, e ora e sempre, nei secoli dei secoli. Amen.`;
+const DAYS=[
+{t:`Dio ascolta chi lo invoca`,ref:`Tobia 3`,
+s:`Nello stesso giorno Tobi, cieco e umiliato, e la giovane Sara, ferita dal dolore e dal disprezzo, si rivolgono a Dio. Le loro preghiere salgono insieme davanti alla sua gloria, e Dio manda Raffaele a guarire entrambi.`,
+p:`O San Raffaele, tu hai portato davanti a Dio la preghiera di Tobi e di Sara nel giorno in cui sembrava non esserci più speranza. Porta anche la mia preghiera così com’è: povera, stanca, a volte confusa. Insegnami a credere che nessun grido sale al Cielo senza essere ascoltato, e che il Padre prepara la risposta già mentre io lo invoco. Amen.`,
+o:`Dedica cinque minuti di silenzio a presentare a Dio, con sincerità, ciò che oggi ti pesa.`},
+{t:`Il compagno di viaggio`,ref:`Tobia 5`,
+s:`Tobia deve partire per un lungo viaggio e cerca qualcuno che conosca la strada. Sulla porta trova un giovane pronto ad accompagnarlo, senza sapere che è un angelo del Signore.`,
+p:`O San Raffaele, che ti sei fatto compagno di strada di Tobia senza farti riconoscere, cammina anche accanto a me. Nelle scelte che devo fare, quando non conosco la via, fammi incontrare le persone giuste e dammi luce per distinguere il bene. Rendimi a mia volta un compagno buono per chi cammina con me. Amen.`,
+o:`Ringrazia Dio per una persona che ti ha accompagnato in un tratto difficile della vita, e se puoi diglielo.`},
+{t:`Non avere paura`,ref:`Tobia 6,1-9`,
+s:`Lungo il fiume Tigri un grosso pesce balza verso Tobia. L’angelo gli dice di afferrarlo: ciò che lo spaventava diventerà rimedio per la guarigione.`,
+p:`O San Raffaele, sulle rive del Tigri hai insegnato a Tobia a non fuggire davanti a ciò che lo spaventava, ma ad affrontarlo con fiducia. Tu conosci le mie paure, quelle che dico e quelle che nascondo. Aiutami ad affrontarle con coraggio, sapendo che nelle mani di Dio anche la prova può diventare medicina. Amen.`,
+o:`Affronta oggi una piccola cosa che rimandi per timore.`},
+{t:`Liberazione dal male`,ref:`Tobia 6,10 – 8,3`,
+s:`Sara ha visto morire sette mariti per opera di un demonio. Seguendo le indicazioni di Raffaele, Tobia la sposa senza timore, e lo spirito maligno viene cacciato lontano e legato.`,
+p:`O San Raffaele, che hai scacciato lo spirito maligno che tormentava Sara, difendi me e la mia casa da ogni insidia del nemico. Libera il mio cuore da ciò che lo tiene prigioniero: rancori, abitudini sbagliate, pensieri di sconforto. Fa’ che io cerchi la mia forza non in me stesso, ma nella preghiera e nei sacramenti. Amen.`,
+o:`Se ti è possibile, accostati alla Confessione durante questa novena.`},
+{t:`La preghiera degli sposi`,ref:`Tobia 8,4-9`,
+s:`La sera delle nozze Tobia e Sara si alzano insieme a pregare. Benedicono Dio, gli chiedono misericordia e la grazia di invecchiare insieme.`,
+p:`O San Raffaele, che hai preparato l’incontro tra Tobia e Sara e hai custodito la loro unione, benedici le famiglie, i fidanzati e chi cerca la persona con cui condividere la vita. Proteggi il mio amore e quello delle persone che mi sono care. Insegnaci, come a Tobia e Sara, a mettere Dio al centro e a pregare insieme. Amen.`,
+o:`Prega oggi per una coppia o una famiglia in difficoltà, chiamandola per nome.`},
+{t:`Il pane di ogni giorno`,ref:`Tobia 9`,
+s:`Mentre si celebrano le nozze, Raffaele va da Gabael a riprendere il denaro che Tobi gli aveva affidato anni prima, perché la famiglia non manchi del necessario.`,
+p:`O San Raffaele, che ti sei preso cura anche del denaro affidato a Gabael, guarda alle mie necessità concrete: il lavoro, la casa, le spese, le preoccupazioni per il domani. Rendimi onesto e generoso con quello che ho, e aiutami a fidarmi della provvidenza del Padre. Amen.`,
+o:`Fai un’elemosina o un gesto concreto per qualcuno che è nel bisogno.`},
+{t:`Chi attende a casa`,ref:`Tobia 10 – 11,6`,
+s:`Anna, la madre di Tobia, ogni giorno scruta la strada aspettando il figlio e teme di averlo perduto. Finalmente lo vede tornare da lontano.`,
+p:`O San Raffaele, che hai ricondotto Tobia sano e salvo alla madre che lo aspettava in lacrime, proteggi chi è in viaggio e chi vive lontano da casa. Consola chi attende un figlio, un amico, una riconciliazione. Riporta a Dio chi si è allontanato, e dona a chi aspetta la pazienza della speranza. Amen.`,
+o:`Contatta una persona lontana che non senti da tempo.`},
+{t:`Dio guarisce`,ref:`Tobia 11,7-15`,
+s:`Tornato a casa, Tobia applica agli occhi del padre il rimedio indicato dall’angelo. Tobi torna a vedere, abbraccia il figlio e benedice Dio.`,
+p:`O San Raffaele, medicina di Dio, che hai ridato la vista a Tobi, ti affido chi è malato nel corpo, nella mente o nello spirito [nomina qui le persone]. Se è la volontà del Padre, ottieni loro la guarigione; altrimenti la forza, la pace e la vicinanza di chi li cura. Apri anche i miei occhi, perché veda la mano di Dio nella mia vita. Amen.`,
+o:`Visita, chiama o scrivi a una persona malata.`},
+{t:`Benedite Dio`,ref:`Tobia 12`,
+s:`Quando Tobi e Tobia vogliono ricompensarlo, Raffaele rivela chi è: uno dei sette angeli che stanno davanti al Signore. Li invita a benedire Dio, a pregare e a fare il bene, poi scompare dalla loro vista.`,
+p:`O San Raffaele, che al termine del viaggio non hai voluto ricompense ma hai chiesto di benedire Dio, insegnami la gratitudine. Ti ringrazio per le grazie di questa novena, anche per quelle che ancora non vedo. Resta mio compagno fino all’ultimo viaggio, quello che mi condurrà alla casa del Padre, dove con te e con tutti gli angeli canterò la sua lode per sempre. Amen.`,
+o:`Scrivi tre cose per cui vuoi ringraziare Dio.`}
+];
+const BEADS=[
+[`La guida`,`San Raffaele, che hai accompagnato Tobia per strade che non conosceva, guida i miei passi nel cammino di questa vita e non lasciarmi mai solo.`],
+[`La protezione`,`San Raffaele, che hai difeso Tobia sulla riva del Tigri, custodiscimi in tutti i pericoli dell’anima e del corpo.`],
+[`La liberazione`,`San Raffaele, che hai scacciato il male che tormentava Sara, libera me e la mia famiglia da ogni potere del maligno.`],
+[`L’amore`,`San Raffaele, che hai unito Tobia e Sara nel nome di Dio, benedici chi ama, custodisci gli sposi e guida chi cerca la propria vocazione.`],
+[`La provvidenza`,`San Raffaele, che hai recuperato i talenti presso Gabael, soccorrimi nelle necessità della vita e insegnami a condividere ciò che ricevo.`],
+[`La guarigione`,`San Raffaele, che hai aperto gli occhi di Tobi, guarisci le ferite del corpo e del cuore, e porta luce a chi vive nel buio.`],
+[`La lode`,`San Raffaele, che stai davanti al trono di Dio e gli presenti le nostre preghiere, porta a Lui la mia supplica e insegnami a benedirlo in ogni cosa.`]
+];
+const LIT_OPEN=[[`Signore, pietà`,`Signore, pietà`],[`Cristo, pietà`,`Cristo, pietà`],[`Signore, pietà`,`Signore, pietà`],[`Cristo, ascoltaci`,`Cristo, ascoltaci`],[`Cristo, esaudiscici`,`Cristo, esaudiscici`],[`Padre del cielo, che sei Dio`,`abbi pietà di noi`],[`Figlio, redentore del mondo, che sei Dio`,`abbi pietà di noi`],[`Spirito Santo, che sei Dio`,`abbi pietà di noi`],[`Santa Trinità, unico Dio`,`abbi pietà di noi`],[`Santa Maria, Regina degli Angeli`,`prega per noi`]];
+const LIT_INV=[`San Raffaele`,`San Raffaele, medicina di Dio`,`San Raffaele, uno dei sette che stanno davanti al Signore`,`San Raffaele, che presenti a Dio le preghiere dei giusti`,`San Raffaele, compagno di Tobia nel cammino`,`San Raffaele, guida sicura dei viaggiatori`,`San Raffaele, custode di chi è lontano da casa`,`San Raffaele, difesa di Tobia sulle rive del Tigri`,`San Raffaele, liberatore di Sara dallo spirito del male`,`San Raffaele, che hai benedetto le nozze di Tobia e Sara`,`San Raffaele, protettore dei fidanzati e degli sposi`,`San Raffaele, custode della pace nelle famiglie`,`San Raffaele, aiuto nelle necessità di ogni giorno`,`San Raffaele, che hai ridato la vista a Tobi`,`San Raffaele, conforto dei ciechi`,`San Raffaele, sollievo dei malati`,`San Raffaele, patrono dei medici e di chi cura`,`San Raffaele, consolatore degli afflitti`,`San Raffaele, rifugio nelle prove`,`San Raffaele, forza contro le insidie del nemico`,`San Raffaele, amico delle opere di misericordia`,`San Raffaele, maestro della preghiera e dell’elemosina`,`San Raffaele, luce di chi è nel dubbio`,`San Raffaele, che ci insegni a benedire Dio`,`San Raffaele, compagno nell’ultimo viaggio`];
+const LIT_END=[[`San Michele Arcangelo`,`prega per noi`],[`San Gabriele Arcangelo`,`prega per noi`],[`Voi tutti, santi Angeli e Arcangeli`,`pregate per noi`],[`Agnello di Dio, che togli i peccati del mondo`,`perdonaci, o Signore`],[`Agnello di Dio, che togli i peccati del mondo`,`ascoltaci, o Signore`],[`Agnello di Dio, che togli i peccati del mondo`,`abbi pietà di noi`]];
+let day=1, intention='', done=new Set(), size=19;
+const app=document.getElementById('app'), nav=document.getElementById('nav');
+function fs(d){size=Math.min(26,Math.max(15,size+d));document.documentElement.style.setProperty('--fs',size+'px')}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function li(a,b){return `<li>${a} — <span class='r'>${b}</span></li>`}
+function drawNav(){nav.innerHTML=DAYS.map((_,i)=>`<button class='${i+1===day?'on':''}' onclick='go(${i+1})'>${i+1}</button>`).join('');const b=nav.children[day-1];b&&b.scrollIntoView({inline:'center',block:'nearest'})}
+function go(n){day=n;done=new Set();drawNav();render();window.scrollTo({top:0,behavior:'smooth'})}
+function setInt(v){intention=v;const s=document.getElementById('intShow');if(s)s.textContent=v.trim()?v.trim():'[la tua intenzione]'}
+function tog(i){done.has(i)?done.delete(i):done.add(i);document.querySelectorAll('.bead')[i].classList.toggle('done');document.getElementById('bar').style.width=(done.size/BEADS.length*100)+'%';document.getElementById('cnt').textContent=done.size}
+function render(){
+const d=DAYS[day-1];
+app.innerHTML=`
+<section class='card'>
+  <div class='label'>La mia intenzione</div>
+  <textarea placeholder='Scrivi qui per chi o per cosa preghi in questa novena…' oninput='setInt(this.value)'>${esc(intention)}</textarea>
+  <p class='rubric'>L’intenzione resta visibile finché la pagina è aperta.</p>
+</section>
+<section class='card'>
+  <div class='label'>Apertura</div>
+  <p><span class='v'>✝</span>Nel nome del Padre e del Figlio e dello Spirito Santo. Amen.</p>
+  <p><span class='v'>V.</span>O Dio, vieni a salvarmi.<br><span class='v'>R.</span>Signore, vieni presto in mio aiuto.</p>
+  <p>${GLORIA}</p>
+  <h3>Offerta della novena</h3>
+  <p>Signore Dio, Padre di misericordia, che hai ascoltato la preghiera di Tobi e di Sara e hai mandato il tuo angelo Raffaele a guarirli, accogli questa novena. Ti affido <span class='int' id='intShow'>${intention.trim()?esc(intention.trim()):'[la tua intenzione]'}</span>. Per l’intercessione di San Raffaele, rendimi docile alla tua volontà e fiducioso nella tua provvidenza. Amen.</p>
+</section>
+<section class='card'>
+  <div class='label'>Giorno ${day} di 9</div>
+  <h2>${d.t}</h2>
+  <div class='ref'>📖 ${d.ref}</div>
+  <p class='story'>${d.s}</p>
+  <p>${d.p}</p>
+  <div class='prop'><b>Proposito del giorno</b>${d.o}</div>
+</section>
+<section class='card'>
+  <div class='label'>Coroncina</div>
+  <h2>I sette passi del cammino di Tobia</h2>
+  <p class='rubric'>Sette invocazioni, come i sette angeli che stanno davanti al Signore (Tb 12,15). Dopo ciascuna si recitano un Padre nostro, un’Ave Maria e un Gloria, poi la giaculatoria. Tocca un passo per segnarlo.</p>
+  <div class='progress'><i id='bar'></i></div>
+  <p class='rubric'><span id='cnt'>0</span> di ${BEADS.length}</p>
+  ${BEADS.map((b,i)=>`<button class='bead' data-n='${i+1}' onclick='tog(${i})'><strong>${b[0]}</strong>${b[1]}<div class='after'>Padre nostro · Ave Maria · Gloria<br>San Raffaele, medicina di Dio, prega per noi.</div></button>`).join('')}
+  <h3>A conclusione</h3>
+  <p>San Raffaele, cammina con noi.<br>San Raffaele, custodiscici.<br>San Raffaele, guariscici.</p>
+  <details><summary>Testi del Padre nostro, Ave Maria e Gloria</summary><p>${PATER}</p><p>${AVE}</p><p>${GLORIA}</p></details>
+</section>
+<section class='card'>
+  <div class='label'>Litanie</div>
+  <h2>Litanie di San Raffaele Arcangelo</h2>
+  <ul class='lit'>
+    ${LIT_OPEN.map(x=>li(x[0],x[1])).join('')}
+    ${LIT_INV.map(x=>li(x,'prega per noi')).join('')}
+    ${LIT_END.map(x=>li(x[0],x[1])).join('')}
+    <li class='sep'><span class='v'>V.</span>Prega per noi, San Raffaele Arcangelo.<br><span class='v'>R.</span>Perché siamo resi degni delle promesse di Cristo.</li>
+  </ul>
+  <h3>Preghiamo</h3>
+  <p>O Dio, che hai dato il beato Arcangelo Raffaele come compagno di viaggio al tuo servo Tobia, concedi a noi, tuoi servi, di essere sempre custoditi dalla sua protezione e sostenuti dal suo aiuto. Per Cristo nostro Signore. Amen.</p>
+  <p class='rubric'>Dall’antica colletta della festa di San Raffaele nel Messale Romano.</p>
+</section>
+<section class='card'>
+  <div class='label'>Conclusione</div>
+  <p>Sotto la tua protezione cerchiamo rifugio, santa Madre di Dio: non disprezzare le suppliche di noi che siamo nella prova, e liberaci da ogni pericolo, o Vergine gloriosa e benedetta.</p>
+  <p>Signore nostro Dio, ti ringraziamo per il dono dei tuoi angeli, che mandi a custodirci nel cammino. Per l’intercessione di San Raffaele concedici di vivere sempre alla tua presenza, di essere medicina per i fratelli e di giungere un giorno alla tua casa. Per Cristo nostro Signore. Amen.</p>
+  <p><span class='v'>V.</span>Il Signore ci benedica, ci preservi da ogni male e ci conduca alla vita eterna.<br><span class='v'>R.</span>Amen.</p>
+  <p><span class='v'>✝</span>Nel nome del Padre e del Figlio e dello Spirito Santo. Amen.</p>
+</section>
+<div class='pager'>
+  <button onclick='go(${day-1})' ${day===1?'disabled':''}>← Giorno ${Math.max(1,day-1)}</button>
+  <button onclick='go(${day+1})' ${day===9?'disabled':''}>Giorno ${Math.min(9,day+1)} →</button>
+</div>`;
+}
+drawNav();render();
+</script>
+</body>
+</html>
