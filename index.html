@@ -34,7 +34,8 @@ p{margin-bottom:10px}
 .v{color:var(--accent);font-weight:700;margin-right:4px}
 .rubric{font:400 13px/1.5 Inter,sans-serif;color:var(--muted);margin:8px 0}
 .src{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;background:var(--accent);color:var(--bg);text-decoration:none;border-radius:12px;padding:14px;font:600 15px/1.35 Inter,sans-serif;margin:10px 0 4px}
-.trad{white-space:pre-line;margin-top:12px}
+.trad{white-space:pre-line;margin-top:4px}
+.refr{color:var(--accent);font-style:italic}
 textarea{width:100%;min-height:70px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-size:.95em;resize:vertical}
 .int{color:var(--mg);font-style:italic}
 details.std{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
@@ -92,16 +93,19 @@ const FONTE='https://www.parrocchiasanraffaele.it/s-raffaele/novena-a-san-raffae
    Se lasci vuoto, compare solo il pulsante che apre la fonte.
    ============================================================ */
 const TRAD=[
-`` , // giorno 1
-`` , // giorno 2
-`` , // giorno 3
-`` , // giorno 4
-`` , // giorno 5
-`` , // giorno 6
-`` , // giorno 7
-`` , // giorno 8
-``   // giorno 9
+`O pietoso Arcangelo San Raffaele, soccorso di coloro che con le opere di misericordia, attirano la benevolenza di Dio, fa’ che anche noi mai dimentichiamo chi soffre, chi è abbandonato e solo.`,
+`O benigno Arcangelo San Raffaele, Medicina di Dio nel corpo, sollevaci dalle infermità, donaci la forza di offrire a Dio ogni sofferenza per il bene delle anime, preserva il nostro corpo dall’impurità, perché sia tempio della Santissima Trinità.`,
+`O potente Arcangelo San Raffaele, Medicina di Dio nell’anima, guariscici da ogni ferita, paura, angoscia e allontana da noi la cecità del peccato e dell’errore.`,
+`O nobile Arcangelo San Raffaele, Medicina di Dio nello spirito, tu che stai sempre dinanzi al trono dell’Altissimo, aiuta anche noi a conseguire la gioia della salvezza eterna, sventando le insidie dell’avversario.`,
+`O sapiente Arcangelo San Raffaele, che accompagnasti Tobia nel suo difficile viaggio, guida i giovani nella scelta della loro “vocazione”, preparali nella purezza e nella preghiera e guida i loro educatori nella scelta del loro stato di vita.`,
+`O premuroso Arcangelo San Raffaele, che conducesti Tobia da Sara, liberandola dalle vessazioni sataniche, aiuta le famiglie ad essere sante, caste, aperte alla speranza e al dono della vita.`,
+`O provvido Arcangelo San Raffaele, che aiutasti Tobia a riscuotere i suoi crediti, aiuta noi e ogni famiglia nelle difficoltà materiali e fa’ che ci serviamo del denaro saggiamente, per conquistare la vera ricchezza.`,
+`O benevolo Arcangelo San Raffaele, figura del Padre Misericordioso che sapientemente guida ogni esistenza, di Gesù Buon Pastore, del Paraclito che sempre ci sostiene, fa’ che nella nostra vita confidiamo nell’Amore di Dio e ci abbandoniamo con fiducia alla Sua santa volontà.`,
+`O dolce Arcangelo San Raffaele, la tua potente intercessione porti in noi, nelle famiglie, nel mondo intero la pace; conduci noi tutti alla guarigione totale, a Gesù Eucaristia, fonte di ogni guarigione.`
 ];
+const REFR=`San Raffaele Arcangelo, con la tua luce illuminaci.
+San Raffaele Arcangelo, con le tue ali proteggici.
+San Raffaele Arcangelo, con la tua medicina guariscici.`;
 
 const PATER=`Padre nostro, che sei nei cieli, sia santificato il tuo nome, venga il tuo regno, sia fatta la tua volontà, come in cielo così in terra. Dacci oggi il nostro pane quotidiano, e rimetti a noi i nostri debiti come anche noi li rimettiamo ai nostri debitori, e non abbandonarci alla tentazione, ma liberaci dal male. Amen.`;
 const AVE=`Ave, o Maria, piena di grazia, il Signore è con te. Tu sei benedetta fra le donne e benedetto è il frutto del tuo seno, Gesù. Santa Maria, Madre di Dio, prega per noi peccatori, adesso e nell’ora della nostra morte. Amen.`;
@@ -188,9 +192,10 @@ app.innerHTML=`
 <section class='card'>
   <div class='label'>Giorno ${day} di 9</div>
   <h2>Preghiera del giorno</h2>
-  <p class='rubric'>Recita la preghiera del giorno ${day} della novena tradizionale, seguita dal Gloria e dalle invocazioni indicate nel testo.</p>
-  <a class='src' href='${FONTE}' target='_blank' rel='noopener'>📖 Apri la novena · Parrocchia San Raffaele, Roma ↗</a>
-  ${tr?`<p class='trad'>${tr}</p>`:''}
+  <p class='trad'>${tr}</p>
+  <p>${GLORIA}</p>
+  <p class='trad refr'>${REFR}</p>
+  <p class='rubric'>Testo della novena della <a href='${FONTE}' target='_blank' rel='noopener' style='color:inherit'>Parrocchia San Raffaele Arcangelo di Roma</a>.</p>
   ${box(`Tobia e preghiera personale · ${d.t}`,`<div class='ref'>📖 ${d.ref}</div><p class='story'>${d.s}</p><p>${d.p}</p><div class='prop'><b>Proposito del giorno</b>${d.o}</div>`)}
 </section>
 
