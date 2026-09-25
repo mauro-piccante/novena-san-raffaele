@@ -8,8 +8,8 @@
 <link rel='preconnect' href='https://fonts.googleapis.com'>
 <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap' rel='stylesheet'>
 <style>
-:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2620;--muted:#7a6f60;--accent:#1f5a47;--gold:#b0833a;--line:#e6dccb;--soft:#eef3ef;--fs:19px}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1a16;--card:#16231e;--ink:#ece6da;--muted:#a79f90;--accent:#7cc4a6;--gold:#d9b06a;--line:#27372f;--soft:#1c2c26}}
+:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2620;--muted:#7a6f60;--accent:#1f5a47;--gold:#b0833a;--line:#e6dccb;--soft:#eef3ef;--fs:19px;--mbg:#1d2b26;--mink:#efe8da;--ml:rgba(255,255,255,.18);--mg:#e2c07e}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1a16;--card:#16231e;--ink:#ece6da;--muted:#a79f90;--accent:#7cc4a6;--gold:#d9b06a;--line:#27372f;--soft:#1c2c26;--mbg:#ece6da;--mink:#1d2b26;--ml:rgba(0,0,0,.15);--mg:#8a5f1e}}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:var(--fs);line-height:1.55;padding-bottom:env(safe-area-inset-bottom)}
@@ -29,34 +29,47 @@ main{max-width:640px;margin:0 auto;padding:16px 14px 40px}
 h2{font-size:1.35em;font-weight:600;line-height:1.2;margin-bottom:10px;color:var(--accent)}
 h3{font-size:1.1em;font-weight:600;margin:14px 0 4px}
 p{margin-bottom:10px}
-.ref{font:500 13px Inter,sans-serif;color:var(--muted);margin-bottom:8px}
-.story{font-style:italic;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px;margin:10px 0 14px}
+.ref{font:500 13px Inter,sans-serif;opacity:.75;margin-bottom:8px}
+.story{font-style:italic;opacity:.85;border-left:3px solid var(--mg);padding-left:12px;margin:6px 0 14px}
 .v{color:var(--accent);font-weight:700;margin-right:4px}
 .rubric{font:400 13px/1.5 Inter,sans-serif;color:var(--muted);margin:8px 0}
-.prop{background:var(--soft);border-radius:12px;padding:12px 14px;margin-top:12px}
-.prop b{font:600 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.src{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;background:var(--accent);color:var(--bg);text-decoration:none;border-radius:12px;padding:14px;font:600 15px/1.35 Inter,sans-serif;margin:10px 0 4px}
+.trad{white-space:pre-line;margin-top:12px}
 textarea{width:100%;min-height:70px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-size:.95em;resize:vertical}
-.int{color:var(--accent);font-style:italic}
-.bead{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px 52px;margin:10px 0;color:var(--ink);font:inherit;position:relative;cursor:pointer;transition:.2s}
-.bead::before{content:attr(data-n);position:absolute;left:12px;top:14px;width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font:600 13px Inter,sans-serif;color:var(--gold)}
-.bead.done{opacity:.55}
-.bead.done::before{content:'✓';background:var(--gold);color:var(--card)}
-.bead strong{display:block;color:var(--accent);font-size:1.02em}
-.bead .after{font:400 13px/1.5 Inter,sans-serif;color:var(--muted);margin-top:6px}
-.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:4px 0 6px}
-.progress i{display:block;height:100%;background:var(--gold);width:0;transition:.3s}
-details{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
-summary{font:600 13px Inter,sans-serif;color:var(--accent);cursor:pointer}
-details p{margin-top:8px}
+.int{color:var(--mg);font-style:italic}
+details.std{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+details.std summary{font:600 13px Inter,sans-serif;color:var(--accent);cursor:pointer}
+details.std p{margin-top:8px}
+.mine{margin-top:12px;border-radius:12px;background:var(--mbg);color:var(--mink);overflow:hidden}
+.mine summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 14px;font:600 14px/1.3 Inter,sans-serif;cursor:pointer}
+.mine summary::-webkit-details-marker{display:none}
+.mine .pm{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid var(--mg);color:var(--mg);display:grid;place-items:center;font-size:18px;line-height:1}
+.mine .pm::before{content:'+'}
+.mine[open] .pm::before{content:'−'}
+.mine .tag{display:block;font:600 10px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mg);margin-bottom:2px}
+.mine .in{padding:2px 16px 16px}
+.mine .v{color:var(--mg)}
+.prop{background:var(--ml);border-radius:10px;padding:12px 14px;margin-top:12px}
+.prop b{font:600 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mg);display:block;margin-bottom:2px}
+.bead{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--ml);border-radius:12px;padding:14px 14px 12px 52px;margin:10px 0;color:inherit;font:inherit;position:relative;cursor:pointer;transition:.2s}
+.bead::before{content:attr(data-n);position:absolute;left:12px;top:14px;width:28px;height:28px;border-radius:50%;border:2px solid var(--mg);display:grid;place-items:center;font:600 13px Inter,sans-serif;color:var(--mg)}
+.bead.done{opacity:.5}
+.bead.done::before{content:'✓';background:var(--mg);color:var(--mbg)}
+.bead strong{display:block;color:var(--mg);font-size:1.02em}
+.bead .after{font:400 13px/1.5 Inter,sans-serif;opacity:.7;margin-top:6px}
+.progress{height:6px;background:var(--ml);border-radius:3px;overflow:hidden;margin:4px 0 6px}
+.progress i{display:block;height:100%;background:var(--mg);width:0;transition:.3s}
+.mrub{font:400 13px/1.5 Inter,sans-serif;opacity:.7;margin:6px 0}
 .lit{list-style:none}
 .lit li{padding:5px 0;border-bottom:1px dashed var(--line)}
 .lit li:last-child{border:0}
 .lit .r{color:var(--accent);font-style:italic;white-space:nowrap}
-.lit .sep{border:0;padding-top:12px}
+.mine .lit li{border-color:var(--ml)}
+.mine .lit .r{color:var(--mg)}
 .pager{display:flex;gap:10px}
 .pager button{flex:1;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--accent);font:600 15px Inter,sans-serif}
 .pager button:disabled{opacity:.35}
-footer{text-align:center;font:400 12px Inter,sans-serif;color:var(--muted);padding:0 20px 30px}
+footer{text-align:center;font:400 12px/1.6 Inter,sans-serif;color:var(--muted);padding:0 20px 30px}
 </style>
 </head>
 <body>
@@ -68,11 +81,32 @@ footer{text-align:center;font:400 12px Inter,sans-serif;color:var(--muted);paddi
 </header>
 <nav class='days' id='nav'></nav>
 <main id='app'></main>
-<footer>Preghiera personale ispirata al Libro di Tobia.<br>Festa dei Santi Arcangeli: 29 settembre.</footer>
+<footer>La novena tradizionale è pubblicata dalla Parrocchia San Raffaele Arcangelo di Roma.<br>I box scuri contengono aggiunte personali ispirate al Libro di Tobia.<br>Festa dei Santi Arcangeli: 29 settembre.</footer>
 <script>
+const FONTE='https://www.parrocchiasanraffaele.it/s-raffaele/novena-a-san-raffaele-arcangelo/';
+
+/* ============================================================
+   TESTO TRADIZIONALE DI OGNI GIORNO (facoltativo)
+   Se vuoi, incolla qui il testo che usi, tra i due accenti gravi.
+   Esempio:  `O ... Arcangelo San Raffaele, ...`,
+   Se lasci vuoto, compare solo il pulsante che apre la fonte.
+   ============================================================ */
+const TRAD=[
+`` , // giorno 1
+`` , // giorno 2
+`` , // giorno 3
+`` , // giorno 4
+`` , // giorno 5
+`` , // giorno 6
+`` , // giorno 7
+`` , // giorno 8
+``   // giorno 9
+];
+
 const PATER=`Padre nostro, che sei nei cieli, sia santificato il tuo nome, venga il tuo regno, sia fatta la tua volontà, come in cielo così in terra. Dacci oggi il nostro pane quotidiano, e rimetti a noi i nostri debiti come anche noi li rimettiamo ai nostri debitori, e non abbandonarci alla tentazione, ma liberaci dal male. Amen.`;
 const AVE=`Ave, o Maria, piena di grazia, il Signore è con te. Tu sei benedetta fra le donne e benedetto è il frutto del tuo seno, Gesù. Santa Maria, Madre di Dio, prega per noi peccatori, adesso e nell’ora della nostra morte. Amen.`;
 const GLORIA=`Gloria al Padre e al Figlio e allo Spirito Santo. Come era nel principio, e ora e sempre, nei secoli dei secoli. Amen.`;
+
 const DAYS=[
 {t:`Dio ascolta chi lo invoca`,ref:`Tobia 3`,
 s:`Nello stesso giorno Tobi, cieco e umiliato, e la giovane Sara, ferita dal dolore e dal disprezzo, si rivolgono a Dio. Le loro preghiere salgono insieme davanti alla sua gloria, e Dio manda Raffaele a guarire entrambi.`,
@@ -120,73 +154,75 @@ const BEADS=[
 [`La guarigione`,`San Raffaele, che hai aperto gli occhi di Tobi, guarisci le ferite del corpo e del cuore, e porta luce a chi vive nel buio.`],
 [`La lode`,`San Raffaele, che stai davanti al trono di Dio e gli presenti le nostre preghiere, porta a Lui la mia supplica e insegnami a benedirlo in ogni cosa.`]
 ];
-const LIT_OPEN=[[`Signore, pietà`,`Signore, pietà`],[`Cristo, pietà`,`Cristo, pietà`],[`Signore, pietà`,`Signore, pietà`],[`Cristo, ascoltaci`,`Cristo, ascoltaci`],[`Cristo, esaudiscici`,`Cristo, esaudiscici`],[`Padre del cielo, che sei Dio`,`abbi pietà di noi`],[`Figlio, redentore del mondo, che sei Dio`,`abbi pietà di noi`],[`Spirito Santo, che sei Dio`,`abbi pietà di noi`],[`Santa Trinità, unico Dio`,`abbi pietà di noi`],[`Santa Maria, Regina degli Angeli`,`prega per noi`]];
-const LIT_INV=[`San Raffaele`,`San Raffaele, medicina di Dio`,`San Raffaele, uno dei sette che stanno davanti al Signore`,`San Raffaele, che presenti a Dio le preghiere dei giusti`,`San Raffaele, compagno di Tobia nel cammino`,`San Raffaele, guida sicura dei viaggiatori`,`San Raffaele, custode di chi è lontano da casa`,`San Raffaele, difesa di Tobia sulle rive del Tigri`,`San Raffaele, liberatore di Sara dallo spirito del male`,`San Raffaele, che hai benedetto le nozze di Tobia e Sara`,`San Raffaele, protettore dei fidanzati e degli sposi`,`San Raffaele, custode della pace nelle famiglie`,`San Raffaele, aiuto nelle necessità di ogni giorno`,`San Raffaele, che hai ridato la vista a Tobi`,`San Raffaele, conforto dei ciechi`,`San Raffaele, sollievo dei malati`,`San Raffaele, patrono dei medici e di chi cura`,`San Raffaele, consolatore degli afflitti`,`San Raffaele, rifugio nelle prove`,`San Raffaele, forza contro le insidie del nemico`,`San Raffaele, amico delle opere di misericordia`,`San Raffaele, maestro della preghiera e dell’elemosina`,`San Raffaele, luce di chi è nel dubbio`,`San Raffaele, che ci insegni a benedire Dio`,`San Raffaele, compagno nell’ultimo viaggio`];
+const LIT_OPEN=[[`Signore, pietà`,`Signore, pietà`],[`Cristo, pietà`,`Cristo, pietà`],[`Signore, pietà`,`Signore, pietà`],[`Cristo, ascoltaci`,`Cristo, ascoltaci`],[`Cristo, esaudiscici`,`Cristo, esaudiscici`],[`Padre del cielo, che sei Dio`,`abbi pietà di noi`],[`Figlio, redentore del mondo, che sei Dio`,`abbi pietà di noi`],[`Spirito Santo, che sei Dio`,`abbi pietà di noi`],[`Santa Trinità, unico Dio`,`abbi pietà di noi`],[`Santa Maria, Regina degli Angeli`,`prega per noi`],[`San Raffaele Arcangelo`,`prega per noi`]];
+const LIT_INV=[`San Raffaele, medicina di Dio`,`San Raffaele, uno dei sette che stanno davanti al Signore`,`San Raffaele, che presenti a Dio le preghiere dei giusti`,`San Raffaele, compagno di Tobia nel cammino`,`San Raffaele, guida sicura dei viaggiatori`,`San Raffaele, custode di chi è lontano da casa`,`San Raffaele, difesa di Tobia sulle rive del Tigri`,`San Raffaele, liberatore di Sara dallo spirito del male`,`San Raffaele, che hai benedetto le nozze di Tobia e Sara`,`San Raffaele, protettore dei fidanzati e degli sposi`,`San Raffaele, custode della pace nelle famiglie`,`San Raffaele, aiuto nelle necessità di ogni giorno`,`San Raffaele, che hai ridato la vista a Tobi`,`San Raffaele, conforto dei ciechi`,`San Raffaele, sollievo dei malati`,`San Raffaele, patrono dei medici e di chi cura`,`San Raffaele, consolatore degli afflitti`,`San Raffaele, rifugio nelle prove`,`San Raffaele, forza contro le insidie del nemico`,`San Raffaele, amico delle opere di misericordia`,`San Raffaele, maestro della preghiera e dell’elemosina`,`San Raffaele, luce di chi è nel dubbio`,`San Raffaele, che ci insegni a benedire Dio`,`San Raffaele, compagno nell’ultimo viaggio`];
 const LIT_END=[[`San Michele Arcangelo`,`prega per noi`],[`San Gabriele Arcangelo`,`prega per noi`],[`Voi tutti, santi Angeli e Arcangeli`,`pregate per noi`],[`Agnello di Dio, che togli i peccati del mondo`,`perdonaci, o Signore`],[`Agnello di Dio, che togli i peccati del mondo`,`ascoltaci, o Signore`],[`Agnello di Dio, che togli i peccati del mondo`,`abbi pietà di noi`]];
+
 let day=1, intention='', done=new Set(), size=19;
 const app=document.getElementById('app'), nav=document.getElementById('nav');
 function fs(d){size=Math.min(26,Math.max(15,size+d));document.documentElement.style.setProperty('--fs',size+'px')}
 function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
 function li(a,b){return `<li>${a} — <span class='r'>${b}</span></li>`}
+function box(title,html){return `<details class='mine'><summary><span class='pm'></span><span><span class='tag'>Aggiunta personale</span>${title}</span></summary><div class='in'>${html}</div></details>`}
 function drawNav(){nav.innerHTML=DAYS.map((_,i)=>`<button class='${i+1===day?'on':''}' onclick='go(${i+1})'>${i+1}</button>`).join('');const b=nav.children[day-1];b&&b.scrollIntoView({inline:'center',block:'nearest'})}
 function go(n){day=n;done=new Set();drawNav();render();window.scrollTo({top:0,behavior:'smooth'})}
 function setInt(v){intention=v;const s=document.getElementById('intShow');if(s)s.textContent=v.trim()?v.trim():'[la tua intenzione]'}
 function tog(i){done.has(i)?done.delete(i):done.add(i);document.querySelectorAll('.bead')[i].classList.toggle('done');document.getElementById('bar').style.width=(done.size/BEADS.length*100)+'%';document.getElementById('cnt').textContent=done.size}
 function render(){
-const d=DAYS[day-1];
+const d=DAYS[day-1], tr=(TRAD[day-1]||'').trim();
 app.innerHTML=`
 <section class='card'>
   <div class='label'>La mia intenzione</div>
   <textarea placeholder='Scrivi qui per chi o per cosa preghi in questa novena…' oninput='setInt(this.value)'>${esc(intention)}</textarea>
   <p class='rubric'>L’intenzione resta visibile finché la pagina è aperta.</p>
 </section>
+
 <section class='card'>
   <div class='label'>Apertura</div>
   <p><span class='v'>✝</span>Nel nome del Padre e del Figlio e dello Spirito Santo. Amen.</p>
   <p><span class='v'>V.</span>O Dio, vieni a salvarmi.<br><span class='v'>R.</span>Signore, vieni presto in mio aiuto.</p>
   <p>${GLORIA}</p>
-  <h3>Offerta della novena</h3>
-  <p>Signore Dio, Padre di misericordia, che hai ascoltato la preghiera di Tobi e di Sara e hai mandato il tuo angelo Raffaele a guarirli, accogli questa novena. Ti affido <span class='int' id='intShow'>${intention.trim()?esc(intention.trim()):'[la tua intenzione]'}</span>. Per l’intercessione di San Raffaele, rendimi docile alla tua volontà e fiducioso nella tua provvidenza. Amen.</p>
+  ${box('Offerta della novena',`<p>Signore Dio, Padre di misericordia, che hai ascoltato la preghiera di Tobi e di Sara e hai mandato il tuo angelo Raffaele a guarirli, accogli questa novena. Ti affido <span class='int' id='intShow'>${intention.trim()?esc(intention.trim()):'[la tua intenzione]'}</span>. Per l’intercessione di San Raffaele, rendimi docile alla tua volontà e fiducioso nella tua provvidenza. Amen.</p>`)}
 </section>
+
 <section class='card'>
   <div class='label'>Giorno ${day} di 9</div>
-  <h2>${d.t}</h2>
-  <div class='ref'>📖 ${d.ref}</div>
-  <p class='story'>${d.s}</p>
-  <p>${d.p}</p>
-  <div class='prop'><b>Proposito del giorno</b>${d.o}</div>
+  <h2>Preghiera del giorno</h2>
+  <p class='rubric'>Recita la preghiera del giorno ${day} della novena tradizionale, seguita dal Gloria e dalle invocazioni indicate nel testo.</p>
+  <a class='src' href='${FONTE}' target='_blank' rel='noopener'>📖 Apri la novena · Parrocchia San Raffaele, Roma ↗</a>
+  ${tr?`<p class='trad'>${tr}</p>`:''}
+  ${box(`Tobia e preghiera personale · ${d.t}`,`<div class='ref'>📖 ${d.ref}</div><p class='story'>${d.s}</p><p>${d.p}</p><div class='prop'><b>Proposito del giorno</b>${d.o}</div>`)}
 </section>
+
 <section class='card'>
   <div class='label'>Coroncina</div>
-  <h2>I sette passi del cammino di Tobia</h2>
-  <p class='rubric'>Sette invocazioni, come i sette angeli che stanno davanti al Signore (Tb 12,15). Dopo ciascuna si recitano un Padre nostro, un’Ave Maria e un Gloria, poi la giaculatoria. Tocca un passo per segnarlo.</p>
-  <div class='progress'><i id='bar'></i></div>
-  <p class='rubric'><span id='cnt'>0</span> di ${BEADS.length}</p>
-  ${BEADS.map((b,i)=>`<button class='bead' data-n='${i+1}' onclick='tog(${i})'><strong>${b[0]}</strong>${b[1]}<div class='after'>Padre nostro · Ave Maria · Gloria<br>San Raffaele, medicina di Dio, prega per noi.</div></button>`).join('')}
-  <h3>A conclusione</h3>
-  <p>San Raffaele, cammina con noi.<br>San Raffaele, custodiscici.<br>San Raffaele, guariscici.</p>
-  <details><summary>Testi del Padre nostro, Ave Maria e Gloria</summary><p>${PATER}</p><p>${AVE}</p><p>${GLORIA}</p></details>
+  <h2>Coroncina a San Raffaele</h2>
+  <p class='rubric'>La coroncina tradizionale si trova nei libretti devozionali, per esempio quello dell’Editrice Shalom. Qui sotto trovi una versione personale in sette passi.</p>
+  ${box('I sette passi del cammino di Tobia',`<p class='mrub'>Sette invocazioni, come i sette angeli che stanno davanti al Signore (Tb 12,15). Dopo ciascuna: Padre nostro, Ave Maria, Gloria e la giaculatoria. Tocca un passo per segnarlo.</p><div class='progress'><i id='bar'></i></div><p class='mrub'><span id='cnt'>0</span> di ${BEADS.length}</p>${BEADS.map((b,i)=>`<button class='bead' data-n='${i+1}' onclick='tog(${i})'><strong>${b[0]}</strong>${b[1]}<div class='after'>Padre nostro · Ave Maria · Gloria<br>San Raffaele, medicina di Dio, prega per noi.</div></button>`).join('')}<h3>A conclusione</h3><p>San Raffaele, cammina con noi.<br>San Raffaele, custodiscici.<br>San Raffaele, guariscici.</p>`)}
+  <details class='std'><summary>Testi del Padre nostro, Ave Maria e Gloria</summary><p>${PATER}</p><p>${AVE}</p><p>${GLORIA}</p></details>
 </section>
+
 <section class='card'>
   <div class='label'>Litanie</div>
   <h2>Litanie di San Raffaele Arcangelo</h2>
-  <ul class='lit'>
-    ${LIT_OPEN.map(x=>li(x[0],x[1])).join('')}
-    ${LIT_INV.map(x=>li(x,'prega per noi')).join('')}
-    ${LIT_END.map(x=>li(x[0],x[1])).join('')}
-    <li class='sep'><span class='v'>V.</span>Prega per noi, San Raffaele Arcangelo.<br><span class='v'>R.</span>Perché siamo resi degni delle promesse di Cristo.</li>
+  <ul class='lit'>${LIT_OPEN.map(x=>li(x[0],x[1])).join('')}</ul>
+  ${box('Invocazioni a San Raffaele',`<ul class='lit'>${LIT_INV.map(x=>li(x,'prega per noi')).join('')}</ul>`)}
+  <ul class='lit' style='margin-top:12px'>${LIT_END.map(x=>li(x[0],x[1])).join('')}
+    <li><span class='v'>V.</span>Prega per noi, San Raffaele Arcangelo.<br><span class='v'>R.</span>Perché siamo resi degni delle promesse di Cristo.</li>
   </ul>
   <h3>Preghiamo</h3>
   <p>O Dio, che hai dato il beato Arcangelo Raffaele come compagno di viaggio al tuo servo Tobia, concedi a noi, tuoi servi, di essere sempre custoditi dalla sua protezione e sostenuti dal suo aiuto. Per Cristo nostro Signore. Amen.</p>
   <p class='rubric'>Dall’antica colletta della festa di San Raffaele nel Messale Romano.</p>
 </section>
+
 <section class='card'>
   <div class='label'>Conclusione</div>
   <p>Sotto la tua protezione cerchiamo rifugio, santa Madre di Dio: non disprezzare le suppliche di noi che siamo nella prova, e liberaci da ogni pericolo, o Vergine gloriosa e benedetta.</p>
-  <p>Signore nostro Dio, ti ringraziamo per il dono dei tuoi angeli, che mandi a custodirci nel cammino. Per l’intercessione di San Raffaele concedici di vivere sempre alla tua presenza, di essere medicina per i fratelli e di giungere un giorno alla tua casa. Per Cristo nostro Signore. Amen.</p>
-  <p><span class='v'>V.</span>Il Signore ci benedica, ci preservi da ogni male e ci conduca alla vita eterna.<br><span class='v'>R.</span>Amen.</p>
+  ${box('Preghiera di ringraziamento',`<p>Signore nostro Dio, ti ringraziamo per il dono dei tuoi angeli, che mandi a custodirci nel cammino. Per l’intercessione di San Raffaele concedici di vivere sempre alla tua presenza, di essere medicina per i fratelli e di giungere un giorno alla tua casa. Per Cristo nostro Signore. Amen.</p>`)}
+  <p style='margin-top:14px'><span class='v'>V.</span>Il Signore ci benedica, ci preservi da ogni male e ci conduca alla vita eterna.<br><span class='v'>R.</span>Amen.</p>
   <p><span class='v'>✝</span>Nel nome del Padre e del Figlio e dello Spirito Santo. Amen.</p>
 </section>
+
 <div class='pager'>
   <button onclick='go(${day-1})' ${day===1?'disabled':''}>← Giorno ${Math.max(1,day-1)}</button>
   <button onclick='go(${day+1})' ${day===9?'disabled':''}>Giorno ${Math.min(9,day+1)} →</button>
